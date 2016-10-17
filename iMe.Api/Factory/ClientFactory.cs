@@ -1,27 +1,21 @@
-﻿using System.Collections;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using NetworkAccess;
 
 namespace iMe.Factory
 {
     public static class ClientFactory
     {
-
-
         public static ISocialNetworkClient GetClient(string clientType)
         {
             var container = UnityConfig.GetConfiguredContainer();
-            switch (clientType.ToLower())
+
+            switch (clientType.ToLowerInvariant())
             {
                 case "twitter":
                     return container.Resolve<ISocialNetworkClient>("twitter");
-             default:
+                default:
                     return container.Resolve<ISocialNetworkClient>();
-
             }
         }
-        
-        
-        
     }
 }
