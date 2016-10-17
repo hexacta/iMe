@@ -21,7 +21,7 @@ Al instalar el cliente git para windows, seleccionar la opcion que integra en el
 
 ## Como levantar el cliente web
 
-Ejecutar `gulp build` y luego `gulp serve`
+Ejecutar `gulp`
 
 ## Reglas de desarrollo
 * Cualquiera puede meter mano
