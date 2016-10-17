@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using NetworkAccess;
 using iMe.Factory;
 
 namespace iMe.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SocialNetworkController : ApiController
     {
         private ISocialNetworkClient client;
