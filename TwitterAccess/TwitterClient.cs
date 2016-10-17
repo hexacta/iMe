@@ -13,7 +13,6 @@ namespace TwitterAccess
     public class TwitterClient : ISocialNetworkClient
     {
         private static ApplicationOnlyAuthorizer _auth;
-        private static IMapper _mapper;
 
         /// <summary>
         /// Twitter Login
@@ -45,19 +44,6 @@ namespace TwitterAccess
         /// <returns></returns>
         public async Task<IList<PersonalInfoDto>> GetPersonalInfo(string userId)
         {
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<User, PersonalInfoDto>()
-                    .ForMember(dest => dest.UserId,
-                        opts => opts.MapFrom(src => src.UserIDResponse))
-                    .ForMember(dest => dest.UserName,
-                        opts => opts.MapFrom(src => src.Name))
-                        .ForMember(dest => dest.ProfilePicUrl,
-                        opts => opts.MapFrom(src => src.ProfileImageUrl))
-                    .ForMember(dest => dest.Bio,
-                        opts => opts.MapFrom(src => src.Description));
-            });
-
             IList<User> userList = new List<User>();
             await Login();
             var twitterCtx = new TwitterContext(_auth);
@@ -75,7 +61,8 @@ namespace TwitterAccess
                 Debug.Write(ex.Message);
             }
 
-            IList<PersonalInfoDto> personalInfo = Mapper.Map<IList<User>, IList<PersonalInfoDto>>(userList);
+            IList<PersonalInfoDto> personalInfo = 
+                Mapper.Map<IList<User>, IList<PersonalInfoDto>>(userList);
             return personalInfo;
         }
     }

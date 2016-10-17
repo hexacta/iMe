@@ -9,32 +9,29 @@ namespace iMe
 {
     public static class UnityConfig
     {
-
-        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
-        {
-            var container = new UnityContainer();
-            RegisterComponents(container);
-            return container;
-        });
+        private static readonly Lazy<IUnityContainer> Container = 
+            new Lazy<IUnityContainer>(() =>
+                {
+                    var container = new UnityContainer();
+                    RegisterComponents(container);
+                    return container;
+                });
 
         /// <summary>
         /// Gets the configured Unity container.
         /// </summary>
         public static IUnityContainer GetConfiguredContainer()
         {
-            return container.Value;
+            return Container.Value;
         }
 
         public static void RegisterComponents(IUnityContainer container)
         {
-			// register all your components with the container here
+            // register all your components with the container here
             // it is NOT necessary to register your controllers
-            
             container.RegisterType<ISocialNetworkClient, TwitterClient>("twitter");
-            
+
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
-
-
     }
 }
