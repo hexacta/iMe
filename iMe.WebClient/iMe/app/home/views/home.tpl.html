@@ -1,13 +1,11 @@
-<h2>home</h2>
-<p>{{home.ctrlName}}</p>
-
 <div>
 	<select ng-model="home.source">
         <option ng-repeat="option in home.sourceOptions" value="{{option.value}}">{{option.name}}</option>
     </select>
+    
 	<label for="txtSearch" id="lblSearch">Username:</label>
 	<input type="text" ng-model="home.searchValue" />
-	<button id="btnSearch" ng-click="home.SearchUser(home.source,home.searchValue)">Buscar</button>
+	<button id="btnSearch" class="btn btn-primary" ng-click="home.SearchUser(home.source,home.searchValue)">Buscar</button>
 </div>
 <div id="results">
 	<label> {{home.status}} </label>
@@ -27,5 +25,4 @@
 				<td>{{personalInfo.ProfilePicUrl}}</td>
 		</tbody>
 	</table>
-	<input type="text" ng-model="home.PersonalInfo"></input>
 </div>

@@ -168,6 +168,7 @@ module.exports = function (gulp, $, config) {
     } else {
       return gulp.src(config.buildDir + 'index.html')
         .pipe($.wiredep.stream({
+          exclude: [/bootstrap[.]js/],
           ignorePath: '../../' + bowerDir.replace(/\\/g, '/'),
           fileTypes: {
             html: {

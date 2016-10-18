@@ -9,6 +9,7 @@
   angular
     .module('iMe', [
       'ui.router',
+      'ui.bootstrap',
       'home'
     ]);
 }());
