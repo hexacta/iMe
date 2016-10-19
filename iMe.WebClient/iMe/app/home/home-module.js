@@ -10,6 +10,7 @@
     .module('home', [
       'ui.router',
       'ui.select',
+      'ui.grid',
       'ngSanitize'
     ]);
 }());

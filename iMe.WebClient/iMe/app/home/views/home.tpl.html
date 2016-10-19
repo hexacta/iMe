@@ -22,21 +22,5 @@
 </div>
 
 <div id="results" style="clear:both;">
-	<label> {{home.status}} </label>
-	<table>
-		<thead>
-			<tr>
-				<th>Username</th>
-				<th>UserId</th>
-				<th>Bio</th>
-				<th>Profile Pic</th>
-		</thead>
-		<tbody>
-			<tr ng-repeat="personalInfo in home.PersonalInfo">
-				<td>{{personalInfo.UserName}}</td>
-				<td>{{personalInfo.UserId}}</td>
-				<td>{{personalInfo.Bio}}</td>
-				<td><img ng-src="{{personalInfo.ProfilePicUrl}}" /></td>
-		</tbody>
-	</table>
+	<div id="resultGrid" ui-grid="{data: home.PersonalInfo}" class="grid"></div>
 </div>
