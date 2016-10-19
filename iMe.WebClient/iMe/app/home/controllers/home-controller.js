@@ -20,7 +20,8 @@
 
     vm.sourceOptions = [{
       value: 'twitter',
-      name: 'Twitter'
+      name: 'Twitter',
+      sourceOptionImg: 'http://www.twitter.com/favicon.ico'
     }
 
     ];

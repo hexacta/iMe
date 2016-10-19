@@ -8,6 +8,8 @@
    */
   angular
     .module('home', [
-      'ui.router'
+      'ui.router',
+      'ui.select',
+      'ngSanitize'
     ]);
 }());
