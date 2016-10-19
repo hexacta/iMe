@@ -15,13 +15,13 @@ Al instalar el cliente git para windows, seleccionar la opcion que integra en el
   1. `npm install -g gulp`
   2. `npm install -g gulp-cli`
 5. Instalar generador 
-  1. `npm i -g yo`
-  2. `npm i -g generator-fountain-webapp`
+  1. `npm install -g yo generator-ng-poly`
+  
 
 
 ## Como levantar el cliente web
 
-Ejecutar `gulp build` y luego `gulp serve`
+Ejecutar `gulp`
 
 ## Reglas de desarrollo
 * Cualquiera puede meter mano
@@ -32,3 +32,7 @@ Ejecutar `gulp build` y luego `gulp serve`
 ####Twitter
 
 https://github.com/JoeMayo/LinqToTwitter/wiki
+
+#### Generador ng-poly
+
+https://github.com/dustinspecker/generator-ng-poly
