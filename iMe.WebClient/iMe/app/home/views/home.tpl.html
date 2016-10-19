@@ -3,7 +3,7 @@
 		<div>
 			<div>
 				<label for="ddlSource">Source:</label>
-				<ui-select ng-model="home.selectedSource" id="ddlSource" ng-required="true">
+				<ui-select ng-model="home.selectedSource" id="ddlSource">
 					<ui-select-match placeholder="Select social network...">
 						{{$select.selected.name}}
 					</ui-select-match>
@@ -14,8 +14,8 @@
 			</div>
 			<div>
 				<label for="txtSearch" id="lblSearch">Username:</label>
-				<input type="text" ng-model="home.searchValue" required />
-				<button id="btnSearch" class="btn btn-primary" ng-click="searchForm.$valid && home.SearchUser(home.selectedSource.value,home.searchValue)">Buscar</button>
+				<input type="text" ng-model="home.searchValue" />
+				<button id="btnSearch" class="btn btn-primary" ng-click="home.SearchUser(home.selectedSource.value,home.searchValue)">Buscar</button>
 			</div>
 		</div>
 	</form>
