@@ -1,8 +1,10 @@
 <div>
 	<form id="searchForm">
-		<div>
-			<div>
+		<div class="row row-buffer-20">
+			<div class="col-md-1 text-right">
 				<label for="ddlSource">Source:</label>
+			</div>
+			<div class="col-md-11">
 				<ui-select ng-model="home.selectedSource" id="ddlSource">
 					<ui-select-match placeholder="Select social network...">
 						{{$select.selected.name}}
@@ -12,15 +14,20 @@
 					</ui-select-choices>
 				</ui-select>
 			</div>
-			<div>
+		</div>
+		<div class="row row-buffer-20">
+			<div class="col-md-1 text-right">
 				<label for="txtSearch" id="lblSearch">Username:</label>
+			</div>
+			<div class="col-md-11">
 				<input type="text" ng-model="home.searchValue" />
 				<button id="btnSearch" class="btn btn-primary" ng-click="home.SearchUser(home.selectedSource.value,home.searchValue)">Buscar</button>
 			</div>
 		</div>
 	</form>
 </div>
-
-<div id="results" style="clear:both;">
-	<div id="resultGrid" ui-grid="{data: home.PersonalInfo}" class="grid"></div>
+<div id="results" class="row row-buffer-20">
+	<div class="col-md-12">
+		<div id="resultGrid" ui-grid="{data: home.PersonalInfo}" class="grid"></div>
+	</div>
 </div>
