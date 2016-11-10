@@ -14,6 +14,8 @@
 
   HomeCtrl.$inject = ['Ime'];
 
+  
+
   function HomeCtrl(Ime) {
     var vm = this;
     vm.ctrlName = 'HomeCtrl';
@@ -22,9 +24,14 @@
       value: 'twitter',
       name: 'Twitter',
       sourceOptionImg: 'http://www.twitter.com/favicon.ico'
-    }
+    }];
 
-    ];
+    vm.gridOptions = {
+    columnDefs: [{ field: 'UserName', displayName: 'User Name', width: 100, cellTemplate: '<div class="ui-grid-cell-contents" >{{grid.getCellValue(row, col)}}</div>' },
+    { field: 'UserId', displayName: 'User Id', width: 100, cellTemplate: '<div class="ui-grid-cell-contents" >{{grid.getCellValue(row, col)}}</div>' },
+    { field: 'ProfilePicUrl', displayName: 'Profile Pic', width: 100, cellTemplate: '<div class="ui-grid-cell-contents" >{{grid.getCellValue(row, col)}}</div>' },
+    { field: 'Bio', displayName: 'Short Bio', width: 100, cellTemplate: '<div class="ui-grid-cell-contents" >{{grid.getCellValue(row, col)}}</div>' }]
+  };
 
     vm.SearchUser = function searchUser(source, username) {
       Ime.searchUser(source, username)

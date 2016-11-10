@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMe.Dto", "Ime.Dto\iMe.Dto.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterAccess", "TwitterAccess\TwitterAccess.csproj", "{823D7955-9F8E-4601-9AE2-946DE171A06A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkAccess", "NetworkAccess\NetworkAccess.csproj", "{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMe.Interfaces", "NetworkAccess\iMe.Interfaces.csproj", "{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaces", "Interfaces", "{A8AEB428-F551-449C-BD04-C83B9D80FE51}"
 EndProject

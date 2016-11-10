@@ -81,9 +81,9 @@
       <Project>{55786136-f0c0-4136-a11b-0f25cea00e07}</Project>
       <Name>iMe.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NetworkAccess\NetworkAccess.csproj">
+    <ProjectReference Include="..\NetworkAccess\iMe.Interfaces.csproj">
       <Project>{4ca69625-14f1-4433-9be1-0a3e7093e2b3}</Project>
-      <Name>NetworkAccess</Name>
+      <Name>iMe.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

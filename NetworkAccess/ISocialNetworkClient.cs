@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using iMe.Dto;
 
-namespace NetworkAccess
+namespace iMe.Interfaces
 {
     public interface ISocialNetworkClient
     {

@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using AutoMapper;
 using iMe.Dto;
+using iMe.Interfaces;
 using LinqToTwitter;
-using NetworkAccess;
+
 
 namespace TwitterAccess
 {

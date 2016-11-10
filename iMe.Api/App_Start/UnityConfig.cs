@@ -1,7 +1,8 @@
 using System;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
-using NetworkAccess;
+using iMe.Controllers;
+using iMe.Interfaces;
 using TwitterAccess;
 using Unity.WebApi;
 
@@ -30,6 +31,7 @@ namespace iMe
             // register all your components with the container here
             // it is NOT necessary to register your controllers
             container.RegisterType<ISocialNetworkClient, TwitterClient>("twitter");
+            container.RegisterType<TwitterController>(new InjectionConstructor(new ResolvedParameter<ISocialNetworkClient>("twitter")));
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
