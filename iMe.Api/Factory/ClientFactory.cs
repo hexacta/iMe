@@ -4,9 +4,9 @@ using Microsoft.Practices.Unity;
 
 namespace iMe.Factory
 {
-    public static class ClientFactory
+    public class ClientFactory : IClientFactory
     {
-        public static ISocialNetworkClient GetClient(string clientType)
+        public ISocialNetworkClient GetClient(string clientType)
         {
             var container = UnityConfig.GetConfiguredContainer();
 
