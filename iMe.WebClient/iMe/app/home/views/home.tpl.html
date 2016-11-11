@@ -26,8 +26,24 @@
 		</div>
 	</form>
 </div>
+
 <div id="results" class="row row-buffer-20">
 	<div class="col-md-12">
-		<div id="resultGrid" ui-grid="{data: home.PersonalInfo}" class="grid"></div>
+		<table st-table="home.PersonalInfo" class="table table-striped">
+			<thead>
+				<th>User Name</th>
+				<th>User Id</th>
+				<th>Profile Pic</th>
+				<th>Short Bio</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in home.PersonalInfo">
+					<td>{{row.UserName}}</td>
+					<td>{{row.UserId}}</td>
+					<td><img ng-src="{{row.ProfilePicUrl}}" /></td>
+					<td>{{row.Bio}}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>

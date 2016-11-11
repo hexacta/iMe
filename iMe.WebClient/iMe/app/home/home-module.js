@@ -11,6 +11,7 @@
       'ui.router',
       'ui.select',
       'ui.grid',
-      'ngSanitize'
+      'ngSanitize',
+      'smart-table'
     ]);
 }());

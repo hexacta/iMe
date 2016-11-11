@@ -26,7 +26,5 @@
     self.get = function () {
       return 'Ime';
     };
-
-
   }
-} ());
+}());
