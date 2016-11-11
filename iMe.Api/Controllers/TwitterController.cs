@@ -9,13 +9,18 @@ namespace iMe.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TwitterController : ApiController
     {
-        private ISocialNetworkClient client;
+        private readonly ISocialNetworkClient client;
+
+        public TwitterController()
+        {
+            
+        }
 
         public TwitterController(ISocialNetworkClient client)
         {
             this.client = client;
         }
-       
+
         [Route("twitter/getpersonalinfo/{userId}")]
         public async Task<IHttpActionResult> GetPersonalInfo(string userId)
         {

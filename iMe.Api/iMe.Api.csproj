@@ -145,7 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
-    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\SocialNetworkController.cs" />
     <Compile Include="Factory\ClientFactory.cs" />
@@ -169,6 +168,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iMe.Bootstrapper\iMe.Bootstrapper.csproj">
+      <Project>{10b31d72-2640-44ed-8835-3b31d5acbd32}</Project>
+      <Name>iMe.Bootstrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ime.Dto\iMe.Dto.csproj">
       <Project>{55786136-f0c0-4136-a11b-0f25cea00e07}</Project>
       <Name>iMe.Dto</Name>

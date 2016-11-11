@@ -1,6 +1,7 @@
+using System;
 using Microsoft.Practices.Unity;
-using NetworkAccess;
 using System.Web.Http;
+using iMe.Interfaces;
 using TwitterAccess;
 using Unity.WebApi;
 
@@ -8,16 +9,28 @@ namespace iMe.Bootstrapper
 {
     public static class UnityConfig
     {
-        
+        private static readonly Lazy<IUnityContainer> Container =
+            new Lazy<IUnityContainer>(() =>
+            {
+                var container = new UnityContainer();
+                RegisterComponents(container);
+                return container;
+            });
 
-        public static void RegisterComponents()
+        /// <summary>
+        /// Gets the configured Unity container.
+        /// </summary>
+        public static IUnityContainer GetConfiguredContainer()
         {
-            var container = new UnityContainer();
+            return Container.Value;
+        }
 
+        public static void RegisterComponents(IUnityContainer container)
+        {
             // register all your components with the container here
             // it is NOT necessary to register your controllers
-
-            container.RegisterType<ISocialNetworkClient, TwitterClient>();
+            container.RegisterType<ISocialNetworkClient, TwitterClient>(new TransientLifetimeManager());
+            //container.RegisterType<TwitterController>(new InjectionConstructor(new ResolvedParameter<ISocialNetworkClient>("twitter")));
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

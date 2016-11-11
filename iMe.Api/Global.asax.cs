@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-
+using iMe.Bootstrapper;
 namespace iMe
 {
     public class WebApiApplication : System.Web.HttpApplication
@@ -8,7 +8,8 @@ namespace iMe
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AutoMapperConfig.Configure();
-            UnityConfig.GetConfiguredContainer();
+            
+            
         }
     }
 }

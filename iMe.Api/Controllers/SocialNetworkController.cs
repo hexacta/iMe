@@ -13,7 +13,7 @@ namespace iMe.Controllers
         private ISocialNetworkClient genericClient;
         
 
-        [Route("/getpersonalinfo/{userId}")]
+        [Route("getpersonalinfo/{userId}")]
         public async Task<IHttpActionResult> GetPersonalInfo(string userId)
         {
             var response = await genericClient.GetPersonalInfo(userId);
