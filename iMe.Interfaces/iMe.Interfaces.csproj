@@ -7,8 +7,8 @@
     <ProjectGuid>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NetworkAccess</RootNamespace>
-    <AssemblyName>NetworkAccess</AssemblyName>
+    <RootNamespace>iMe.Interfaces</RootNamespace>
+    <AssemblyName>iMe.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

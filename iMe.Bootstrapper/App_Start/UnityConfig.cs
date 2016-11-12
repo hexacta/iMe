@@ -1,9 +1,11 @@
 using System;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
-using iMe.Interfaces;
-using TwitterAccess;
+using System.Web.Http.Dispatcher;
+using iMe.Bootstrapper.App_Start;
+using iMe.SocialClients;
 using Unity.WebApi;
+using iMe.Interfaces;
 
 namespace iMe.Bootstrapper
 {
@@ -29,7 +31,8 @@ namespace iMe.Bootstrapper
         {
             // register all your components with the container here
             // it is NOT necessary to register your controllers
-            container.RegisterType<ISocialNetworkClient, TwitterClient>(new TransientLifetimeManager());
+           
+            container.RegisterType<ISocialNetworkClient, TwitterClient>();
             //container.RegisterType<TwitterController>(new InjectionConstructor(new ResolvedParameter<ISocialNetworkClient>("twitter")));
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);

@@ -1,8 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using iMe;
+using iMe.SocialClients;
 
-namespace TwitterAccess.Test
+namespace iMe.SocialClients.Test
 {
     [TestClass]
     public class TwitterClientTest

@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using AutoMapper;
 using iMe.Dto;
-using iMe.Interfaces;
+using iMe.SocialClients;
 using LinqToTwitter;
+using iMe.Interfaces;
 
-
-namespace TwitterAccess
+namespace iMe.SocialClients
 {
     public class TwitterClient : ISocialNetworkClient
     {

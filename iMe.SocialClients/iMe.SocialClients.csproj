@@ -7,8 +7,8 @@
     <ProjectGuid>{823D7955-9F8E-4601-9AE2-946DE171A06A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TwitterAccess</RootNamespace>
-    <AssemblyName>TwitterAccess</AssemblyName>
+    <RootNamespace>iMe.SocialClients</RootNamespace>
+    <AssemblyName>iMe.SocialClients</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -81,8 +81,8 @@
       <Project>{55786136-f0c0-4136-a11b-0f25cea00e07}</Project>
       <Name>iMe.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NetworkAccess\iMe.Interfaces.csproj">
-      <Project>{4ca69625-14f1-4433-9be1-0a3e7093e2b3}</Project>
+    <ProjectReference Include="..\iMe.Interfaces\iMe.Interfaces.csproj">
+      <Project>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</Project>
       <Name>iMe.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>

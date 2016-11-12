@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace TwitterAccess
+namespace iMe.SocialClients
 {
     public static class ConfigKeys
     {

@@ -78,7 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\TwitterAccess\App.config">
+    <None Include="..\iMe.SocialClients\App.config">
       <Link>App.config</Link>
     </None>
     <None Include="packages.config" />
@@ -92,13 +92,9 @@
       <Project>{55786136-f0c0-4136-a11b-0f25cea00e07}</Project>
       <Name>iMe.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NetworkAccess\iMe.Interfaces.csproj">
-      <Project>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</Project>
-      <Name>iMe.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TwitterAccess\TwitterAccess.csproj">
+    <ProjectReference Include="..\iMe.SocialClients\iMe.SocialClients.csproj">
       <Project>{823d7955-9f8e-4601-9ae2-946de171a06a}</Project>
-      <Name>TwitterAccess</Name>
+      <Name>iMe.SocialClients</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
