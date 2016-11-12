@@ -66,5 +66,16 @@ namespace iMe.SocialClients
                 Mapper.Map<IList<User>, IList<PersonalInfoDto>>(userList);
             return personalInfo;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientType"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public Task<IList<PersonalInfoDto>> GetPersonalInfo(string clientType, string userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

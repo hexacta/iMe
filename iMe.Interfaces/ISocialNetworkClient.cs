@@ -9,5 +9,7 @@ namespace iMe.Interfaces
         Task Login();
 
         Task<IList<PersonalInfoDto>> GetPersonalInfo(string userId);
+
+        Task<IList<PersonalInfoDto>> GetPersonalInfo(string clientType, string userId);
     }
 }

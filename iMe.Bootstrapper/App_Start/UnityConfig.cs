@@ -32,8 +32,11 @@ namespace iMe.Bootstrapper
             // register all your components with the container here
             // it is NOT necessary to register your controllers
            
-            container.RegisterType<ISocialNetworkClient, TwitterClient>();
-            //container.RegisterType<TwitterController>(new InjectionConstructor(new ResolvedParameter<ISocialNetworkClient>("twitter")));
+            container.RegisterType<ISocialNetworkClient, TwitterClient>("twitter");
+            container.RegisterType<ISocialNetworkClient, GenericClient>();
+            container.RegisterType<IClientFactory, ClientFactory>();
+            container.RegisterType<IUnityContainer, UnityContainer>();
+            
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

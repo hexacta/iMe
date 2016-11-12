@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using iMe.Factory;
+
 using iMe.Interfaces;
 
 namespace iMe.Controllers
@@ -22,10 +22,10 @@ namespace iMe.Controllers
         }
         
 
-        [Route("getpersonalinfo/{userId}")]
-        public async Task<IHttpActionResult> GetPersonalInfo(string userId)
+        [Route("getpersonalinfo/{clientType}/{userId}")]
+        public async Task<IHttpActionResult> GetPersonalInfo(string clientType, string userId)
         {
-            var response = await genericClient.GetPersonalInfo(userId);
+            var response = await genericClient.GetPersonalInfo(clientType.ToLower(),userId);
             return Ok(response);
         }
     }
