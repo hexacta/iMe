@@ -17,7 +17,7 @@
   function Ime($http) {
     var self = this;
     self.searchUser = function (source, username) {
-      return $http.get('http://localhost:62294/twitter/getpersonalinfo/' + username)
+      return $http.get('http://localhost:62294/getpersonalinfo/' + source + '/' + username)
         .then(function (response) {
           return response.data;
         });
@@ -27,4 +27,4 @@
       return 'Ime';
     };
   }
-}());
+} ());

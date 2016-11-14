@@ -178,6 +178,10 @@
       <Project>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</Project>
       <Name>iMe.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\iMe.SocialClients\iMe.SocialClients.csproj">
+      <Project>{823D7955-9F8E-4601-9AE2-946DE171A06A}</Project>
+      <Name>iMe.SocialClients</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
