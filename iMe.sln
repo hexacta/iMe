@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMe.SocialClients.Test", "i
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMe.Interfaces", "iMe.Interfaces\iMe.Interfaces.csproj", "{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMe.Mapper", "iMe.Mapper\iMe.Mapper.csproj", "{5205DEEF-2D6E-44FD-89F6-353BA3E86D01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5205DEEF-2D6E-44FD-89F6-353BA3E86D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5205DEEF-2D6E-44FD-89F6-353BA3E86D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5205DEEF-2D6E-44FD-89F6-353BA3E86D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5205DEEF-2D6E-44FD-89F6-353BA3E86D01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +74,6 @@ Global
 		{823D7955-9F8E-4601-9AE2-946DE171A06A} = {4F127CC6-0ACE-4103-981D-B07A21A5C3C5}
 		{8B5BA77E-9979-46AB-8549-A26BB8707BEF} = {4F127CC6-0ACE-4103-981D-B07A21A5C3C5}
 		{4CA69625-14F1-4433-9BE1-0A3E7093E2B3} = {A8AEB428-F551-449C-BD04-C83B9D80FE51}
+		{5205DEEF-2D6E-44FD-89F6-353BA3E86D01} = {6927A778-5B06-448A-A705-C6BB0F7B26D6}
 	EndGlobalSection
 EndGlobal

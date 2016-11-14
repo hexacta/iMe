@@ -1,20 +1,36 @@
-﻿using AutoMapper;
-using iMe.Dto;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
+using iMe.Interfaces;
 using iMe.SocialClients.Models;
+using iMe.Dto;
 using LinqToTwitter;
 
-namespace iMe
+namespace iMe.Mapper
 {
-    public static class AutoMapperConfig
+
+    public class EntityMapper : IEntityMapper
     {
-        public static void Configure()
+        private readonly IMapper mapper;
+
+        public EntityMapper()
         {
-            Mapper.Initialize(
-                cfg =>
-                {
-                    cfg.AddProfile<PersonalInfoDtoProfile>();
-                }
-            );
+            var config = new MapperConfiguration(ConfigureMaps);
+            mapper = config.CreateMapper();
+        }
+
+
+        private void ConfigureMaps(IMapperConfigurationExpression config)
+        {
+            config.AddProfile<PersonalInfoDtoProfile>();
+        }
+
+        public TDestination Map<TSource, TDestination>(TSource source)
+        {
+            return mapper.Map<TSource, TDestination>(source);
         }
     }
 
@@ -44,3 +60,4 @@ namespace iMe
         }
     }
 }
+    

@@ -17,6 +17,13 @@ namespace iMe.SocialClients
 {
     public class GitHubClient : ISocialNetworkClient
     {
+        private readonly IEntityMapper mapper;
+
+        public GitHubClient(IEntityMapper mapper)
+        {
+            this.mapper = mapper;
+        }
+
         public async Task<IList<PersonalInfoDto>> GetPersonalInfo(string userId)
         {
            
@@ -37,7 +44,7 @@ namespace iMe.SocialClients
             }
 
             personalInfo =
-                Mapper.Map<IList<GitHubUserResponse>, IList<PersonalInfoDto>>(gitHubUserResponse);
+                mapper.Map<IList<GitHubUserResponse>, IList<PersonalInfoDto>>(gitHubUserResponse);
             return personalInfo;
         }
 

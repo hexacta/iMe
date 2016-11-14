@@ -14,7 +14,13 @@ namespace iMe.SocialClients
     public class TwitterClient : ISocialNetworkClient
     {
         private static ApplicationOnlyAuthorizer _auth;
-
+        private readonly IEntityMapper mapper;
+        
+        public TwitterClient(IEntityMapper mapper)
+        {
+            this.mapper=mapper;
+        }
+        
         /// <summary>
         /// Twitter Login
         /// </summary>
@@ -63,7 +69,7 @@ namespace iMe.SocialClients
             }
 
             IList<PersonalInfoDto> personalInfo = 
-                Mapper.Map<IList<User>, IList<PersonalInfoDto>>(userList);
+                mapper.Map<IList<User>, IList<PersonalInfoDto>>(userList);
             return personalInfo;
         }
 

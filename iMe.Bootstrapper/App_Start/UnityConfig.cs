@@ -6,6 +6,7 @@ using iMe.Bootstrapper.App_Start;
 using iMe.SocialClients;
 using Unity.WebApi;
 using iMe.Interfaces;
+using iMe.Mapper;
 
 namespace iMe.Bootstrapper
 {
@@ -36,6 +37,8 @@ namespace iMe.Bootstrapper
             container.RegisterType<ISocialNetworkClient, GitHubClient>("github");
             container.RegisterType<ISocialNetworkClient, GenericClient>();
             container.RegisterType<IUnityContainer, UnityContainer>();
+
+            container.RegisterType<IEntityMapper, EntityMapper>();
             
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
