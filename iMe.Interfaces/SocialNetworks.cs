@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using iMe.Interfaces;
 
 namespace iMe.Interfaces
 {
-    public interface IClientFactory
+    public enum SocialNetworks
     {
-        ISocialNetworkClient GetClient(string clientType);
+        
+        Twitter,
+        GitHub,
+        Generic,
+        All
     }
 }

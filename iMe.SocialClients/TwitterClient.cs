@@ -77,5 +77,10 @@ namespace iMe.SocialClients
         {
             throw new NotImplementedException();
         }
+
+        public SocialNetworks GetSocialNetworkName()
+        {
+            return SocialNetworks.Twitter;
+        }
     }
 }

@@ -35,7 +35,6 @@ namespace iMe.Bootstrapper
             container.RegisterType<ISocialNetworkClient, TwitterClient>("twitter");
             container.RegisterType<ISocialNetworkClient, GitHubClient>("github");
             container.RegisterType<ISocialNetworkClient, GenericClient>();
-            container.RegisterType<IClientFactory, ClientFactory>();
             container.RegisterType<IUnityContainer, UnityContainer>();
             
 
