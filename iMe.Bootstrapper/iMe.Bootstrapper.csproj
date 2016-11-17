@@ -122,6 +122,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iMe.Business\iMe.Business.csproj">
+      <Project>{031D1487-DB8E-4A44-98B8-4E915BCE080C}</Project>
+      <Name>iMe.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMe.Integration\iMe.Integration.csproj">
+      <Project>{B5A8DCD9-0A0A-4C58-B52F-3BDE3C329EBA}</Project>
+      <Name>iMe.Integration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iMe.Interfaces\iMe.Interfaces.csproj">
       <Project>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</Project>
       <Name>iMe.Interfaces</Name>
@@ -129,10 +137,6 @@
     <ProjectReference Include="..\iMe.Mapper\iMe.Mapper.csproj">
       <Project>{5205DEEF-2D6E-44FD-89F6-353BA3E86D01}</Project>
       <Name>iMe.Mapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\iMe.SocialClients\iMe.SocialClients.csproj">
-      <Project>{823D7955-9F8E-4601-9AE2-946DE171A06A}</Project>
-      <Name>iMe.SocialClients</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

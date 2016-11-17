@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using iMe.Interfaces;
-using iMe.SocialClients.Models;
 using iMe.Dto;
 using LinqToTwitter;
+using iMe.Integration.Models;
 
 namespace iMe.Mapper
 {

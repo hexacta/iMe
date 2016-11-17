@@ -3,10 +3,13 @@ using Microsoft.Practices.Unity;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using iMe.Bootstrapper.App_Start;
-using iMe.SocialClients;
-using Unity.WebApi;
+using iMe.Integration;
+using iMe.Integration.Clients;
 using iMe.Interfaces;
 using iMe.Mapper;
+using Unity.WebApi;
+using iMe.Business;
+using iMe.Integration.Helpers;
 
 namespace iMe.Bootstrapper
 {
@@ -39,6 +42,8 @@ namespace iMe.Bootstrapper
             container.RegisterType<IUnityContainer, UnityContainer>();
 
             container.RegisterType<IEntityMapper, EntityMapper>();
+
+            container.RegisterType<IHttpHelper, HttpClientHelper>();
             
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);

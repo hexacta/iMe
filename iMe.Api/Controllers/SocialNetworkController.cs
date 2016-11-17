@@ -11,11 +11,6 @@ namespace iMe.Controllers
     {
         private ISocialNetworkClient genericClient;
 
-        public SocialNetworkController()
-        {
-            
-        }
-
         public SocialNetworkController(ISocialNetworkClient client)
         {
             genericClient = client;

@@ -7,12 +7,14 @@ namespace iMe.Interfaces
 {
     public interface ISocialNetworkClient
     {
+        #region Properties
+        SocialNetworks SocialNetworkName { get; }
+        #endregion
+
+        #region Methods
         Task Login();
-
         Task<IList<PersonalInfoDto>> GetPersonalInfo(string userId);
-
         Task<IList<PersonalInfoDto>> GetPersonalInfo(string clientType, string userId);
-
-        SocialNetworks GetSocialNetworkName();
+        #endregion
     }
 }
