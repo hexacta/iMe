@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iMe.Interfaces
+namespace iMe.Integration.Test
 {
-    public enum SocialNetworks
+    class GitHubServiceTest
     {
-        
-        Twitter,
-        GitHub,
-        Generic,
-        All
     }
 }

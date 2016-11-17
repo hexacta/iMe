@@ -3,24 +3,25 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 
 using iMe.Interfaces;
+using iMe.Integration;
 
 namespace iMe.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SocialNetworkController : ApiController
     {
-        private ISocialNetworkClient genericClient;
+        private ISocialNetworkService _genericService;
 
-        public SocialNetworkController(ISocialNetworkClient client)
+        public SocialNetworkController(ISocialNetworkService service)
         {
-            genericClient = client;
+            _genericService = service;
         }
         
 
         [Route("getpersonalinfo/{clientType}/{userId}")]
         public async Task<IHttpActionResult> GetPersonalInfo(string clientType, string userId)
         {
-            var response = await genericClient.GetPersonalInfo(clientType.ToLower(),userId);
+            var response = await _genericService.GetPersonalInfo(clientType.ToLower(),userId);
             return Ok(response);
         }
     }

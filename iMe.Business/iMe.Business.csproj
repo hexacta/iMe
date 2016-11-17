@@ -40,13 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericClient.cs" />
+    <Compile Include="GenericService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iMe.Common\iMe.Common.csproj">
+      <Project>{A080A19E-A0C7-4C44-9CA6-50954A10A7C4}</Project>
+      <Name>iMe.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ime.Dto\iMe.Dto.csproj">
       <Project>{55786136-F0C0-4136-A11B-0F25CEA00E07}</Project>
       <Name>iMe.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMe.Integration\iMe.Integration.csproj">
+      <Project>{B5A8DCD9-0A0A-4C58-B52F-3BDE3C329EBA}</Project>
+      <Name>iMe.Integration</Name>
     </ProjectReference>
     <ProjectReference Include="..\iMe.Interfaces\iMe.Interfaces.csproj">
       <Project>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</Project>

@@ -36,9 +36,9 @@ namespace iMe.Bootstrapper
             // register all your components with the container here
             // it is NOT necessary to register your controllers
            
-            container.RegisterType<ISocialNetworkClient, TwitterClient>("twitter");
-            container.RegisterType<ISocialNetworkClient, GitHubClient>("github");
-            container.RegisterType<ISocialNetworkClient, GenericClient>();
+            container.RegisterType<ISocialNetworkService, TwitterService>("twitter");
+            container.RegisterType<ISocialNetworkService, GitHubService>("github");
+            container.RegisterType<ISocialNetworkService, GenericService>();
             container.RegisterType<IUnityContainer, UnityContainer>();
 
             container.RegisterType<IEntityMapper, EntityMapper>();

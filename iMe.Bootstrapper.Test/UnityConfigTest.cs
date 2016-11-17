@@ -40,28 +40,28 @@ namespace iMe.Bootstrapper.Test
         [TestMethod]
         public void WhenResolveGenericSocialNetworkClientShouldNotBeNull()
         {
-            ISocialNetworkClient socialNetworkClient = this.container.Resolve<ISocialNetworkClient>();
+            ISocialNetworkService socialNetworkService = this.container.Resolve<ISocialNetworkService>();
 
-            Assert.IsNotNull(socialNetworkClient);
-            Assert.IsInstanceOfType(socialNetworkClient,typeof(GenericClient));
+            Assert.IsNotNull(socialNetworkService);
+            Assert.IsInstanceOfType(socialNetworkService,typeof(GenericService));
         }
 
         [TestMethod]
         public void WhenResolveTwitterSocialNetworkClientShouldNotBeNull()
         {
-            ISocialNetworkClient twitterClient = this.container.Resolve<ISocialNetworkClient>("twitter");
+            ISocialNetworkService twitterService = this.container.Resolve<ISocialNetworkService>("twitter");
 
-            Assert.IsNotNull(twitterClient);
-            Assert.IsInstanceOfType(twitterClient, typeof(TwitterClient));
+            Assert.IsNotNull(twitterService);
+            Assert.IsInstanceOfType(twitterService, typeof(TwitterService));
         }
 
         [TestMethod]
         public void WhenResolveGitHubSocialNetworkClientShouldNotBeNull()
         {
-            ISocialNetworkClient gitHubClient = this.container.Resolve<ISocialNetworkClient>("github");
+            ISocialNetworkService gitHubService = this.container.Resolve<ISocialNetworkService>("github");
 
-            Assert.IsNotNull(gitHubClient);
-            Assert.IsInstanceOfType(gitHubClient, typeof(GitHubClient));
+            Assert.IsNotNull(gitHubService);
+            Assert.IsInstanceOfType(gitHubService, typeof(GitHubService));
         }
 
         [TestMethod]

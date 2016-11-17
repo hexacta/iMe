@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using iMe.Dto;
+using iMe.Common;
+using iMe.Integration.Models;
 using iMe.Interfaces;
 using LinqToTwitter;
 
 namespace iMe.Integration.Clients
 {
-    public class TwitterClient : ISocialNetworkClient
+    public class TwitterService : ISocialNetworkService
     {
         private static ApplicationOnlyAuthorizer _auth;
         private readonly IEntityMapper mapper;
 
         public SocialNetworks SocialNetworkName => SocialNetworks.Twitter;
 
-        public TwitterClient(IEntityMapper mapper)
+        public TwitterService(IEntityMapper mapper)
         {
             this.mapper=mapper;
         }
@@ -49,7 +50,7 @@ namespace iMe.Integration.Clients
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public async Task<IList<PersonalInfoDto>> GetPersonalInfo(string userId)
+        public async Task<IList<SocialClientResponse>> GetPersonalInfo(string userId)
         {
             IList<User> userList = new List<User>();
             await Login();
@@ -68,8 +69,8 @@ namespace iMe.Integration.Clients
                 Debug.Write(ex.Message);
             }
 
-            IList<PersonalInfoDto> personalInfo = 
-                mapper.Map<IList<User>, IList<PersonalInfoDto>>(userList);
+            IList<SocialClientResponse> personalInfo = 
+                mapper.Map<IList<User>, IList<SocialClientResponse>>(userList);
             return personalInfo;
         }
 
@@ -79,7 +80,7 @@ namespace iMe.Integration.Clients
         /// <param name="clientType"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public Task<IList<PersonalInfoDto>> GetPersonalInfo(string clientType, string userId)
+        public Task<IList<SocialClientResponse>> GetPersonalInfo(string clientType, string userId)
         {
             throw new NotImplementedException();
         }

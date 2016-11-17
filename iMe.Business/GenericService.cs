@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using iMe.Dto;
-using iMe.Interfaces;
+using iMe.Integration;
+using iMe.Integration.Models;
+using iMe.Common;
 
 namespace iMe.Business
 {
-    public class GenericClient : ISocialNetworkClient
+    public class GenericService : ISocialNetworkService
     {
         
-        private readonly ISocialNetworkClient[] clients;
+        private readonly ISocialNetworkService[] _services;
 
         public SocialNetworks SocialNetworkName => SocialNetworks.Generic;
 
-        public GenericClient(ISocialNetworkClient[] snClients)
+        public GenericService(ISocialNetworkService[] snServices)
         {
-            clients = snClients;
+            _services = snServices;
         }
 
-        public async Task<IList<PersonalInfoDto>> GetPersonalInfo(string clientType, string userId)
+        public async Task<IList<SocialClientResponse>> GetPersonalInfo(string clientType, string userId)
         {
-            List<PersonalInfoDto> returnValue = new List<PersonalInfoDto>();
+            List<SocialClientResponse> returnValue = new List<SocialClientResponse>();
 
             //Todo: ver de refactorizar esta parte
             SocialNetworks selectedClient = (SocialNetworks)Enum.Parse(typeof(SocialNetworks), clientType, true);
@@ -29,7 +30,7 @@ namespace iMe.Business
             if (selectedClient != SocialNetworks.All)
             {
 
-                foreach (var snClient in clients)
+                foreach (var snClient in _services)
                 {
                     if (snClient.SocialNetworkName == selectedClient)
                     {
@@ -39,7 +40,7 @@ namespace iMe.Business
             }
             else
             {
-                foreach (var snClient in clients)
+                foreach (var snClient in _services)
                 {
                     returnValue.AddRange(await snClient.GetPersonalInfo(userId));
                 }
@@ -47,7 +48,7 @@ namespace iMe.Business
             return returnValue;
         }
 
-        public Task<IList<PersonalInfoDto>> GetPersonalInfo(string userId)
+        public Task<IList<SocialClientResponse>> GetPersonalInfo(string userId)
         {
             throw new NotImplementedException();
         }

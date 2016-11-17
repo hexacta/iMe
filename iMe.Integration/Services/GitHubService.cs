@@ -3,29 +3,31 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using iMe.Common;
 using iMe.Dto;
 using iMe.Integration.Models;
 using iMe.Interfaces;
 
+
 namespace iMe.Integration.Clients
 {
-    public class GitHubClient : ISocialNetworkClient
+    public class GitHubService : ISocialNetworkService
     {
         private readonly IEntityMapper mapper;
         private readonly IHttpHelper httpHelper;
 
         public SocialNetworks SocialNetworkName => SocialNetworks.GitHub;
 
-        public GitHubClient(IEntityMapper mapper, IHttpHelper httpHelper)
+        public GitHubService(IEntityMapper mapper, IHttpHelper httpHelper)
         {
             this.mapper = mapper;
             this.httpHelper = httpHelper;
         }
 
-        public async Task<IList<PersonalInfoDto>> GetPersonalInfo(string userId)
+        public async Task<IList<SocialClientResponse>> GetPersonalInfo(string userId)
         {
            
-            IList<PersonalInfoDto> personalInfo = new List<PersonalInfoDto>();
+            IList<SocialClientResponse> personalInfo = new List<SocialClientResponse>();
             IList<GitHubUserResponse> gitHubUserResponse = new List<GitHubUserResponse>();
             var client = httpHelper.GetConfiguredHttpClient(ConfigKeys.GitHubUserApiSearchUrl);
 
@@ -42,12 +44,12 @@ namespace iMe.Integration.Clients
             }
 
             personalInfo =
-                mapper.Map<IList<GitHubUserResponse>, IList<PersonalInfoDto>>(gitHubUserResponse);
+                mapper.Map<IList<GitHubUserResponse>, IList<SocialClientResponse>>(gitHubUserResponse);
             return personalInfo;
         }
 
       
-        public Task<IList<PersonalInfoDto>> GetPersonalInfo(string clientType, string userId)
+        public Task<IList<SocialClientResponse>> GetPersonalInfo(string clientType, string userId)
         {
             throw new NotImplementedException();
         }

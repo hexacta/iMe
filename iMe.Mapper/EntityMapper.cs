@@ -25,7 +25,7 @@ namespace iMe.Mapper
 
         private void ConfigureMaps(IMapperConfigurationExpression config)
         {
-            config.AddProfile<PersonalInfoDtoProfile>();
+            config.AddProfile<PersonalInfoProfile>();
         }
 
         public TDestination Map<TSource, TDestination>(TSource source)
@@ -34,11 +34,11 @@ namespace iMe.Mapper
         }
     }
 
-    public class PersonalInfoDtoProfile : Profile
+    public class PersonalInfoProfile : Profile
     {
-        public PersonalInfoDtoProfile()
+        public PersonalInfoProfile()
         {
-            CreateMap<User, PersonalInfoDto>()
+            CreateMap<User, SocialClientResponse>()
                     .ForMember(dest => dest.UserId,
                         opts => opts.MapFrom(src => src.UserIDResponse))
                     .ForMember(dest => dest.UserName,
@@ -48,7 +48,7 @@ namespace iMe.Mapper
                     .ForMember(dest => dest.Bio,
                         opts => opts.MapFrom(src => src.Description));
 
-            CreateMap<GitHubUserResponse, PersonalInfoDto>()
+            CreateMap<GitHubUserResponse, SocialClientResponse>()
                     .ForMember(dest => dest.UserId,
                         opts => opts.MapFrom(src => src.Id))
                     .ForMember(dest => dest.UserName,
@@ -57,6 +57,8 @@ namespace iMe.Mapper
                         opts => opts.MapFrom(src => src.Avatar_Url))
                     .ForMember(dest => dest.Bio,
                         opts => opts.MapFrom(src => src.Bio));
+
+            CreateMap<SocialClientResponse, PersonalInfoDto>();
         }
     }
 }

@@ -82,18 +82,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigKeys.cs" />
-    <Compile Include="Clients\GitHubClient.cs" />
+    <Compile Include="Services\GitHubService.cs" />
     <Compile Include="Helpers\HttpClientHelper.cs" />
     <Compile Include="IHttpHelper.cs" />
+    <Compile Include="ISocialNetworkService.cs" />
     <Compile Include="Models\GitHubUserResponse.cs" />
+    <Compile Include="Models\SocialClientResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Clients\TwitterClient.cs" />
+    <Compile Include="Services\TwitterService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iMe.Common\iMe.Common.csproj">
+      <Project>{A080A19E-A0C7-4C44-9CA6-50954A10A7C4}</Project>
+      <Name>iMe.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ime.Dto\iMe.Dto.csproj">
       <Project>{55786136-f0c0-4136-a11b-0f25cea00e07}</Project>
       <Name>iMe.Dto</Name>
