@@ -14,6 +14,7 @@ using iMe.Integration;
 using iMe.Mapper;
 using iMe.Integration.Clients;
 using iMe.Integration.Helpers;
+using iMe.Integration.Services;
 
 namespace iMe.Bootstrapper.Test
 {
@@ -38,12 +39,12 @@ namespace iMe.Bootstrapper.Test
         }
 
         [TestMethod]
-        public void WhenResolveGenericSocialNetworkClientShouldNotBeNull()
+        public void WhenResolveSocialServiceShouldNotBeNull()
         {
-            ISocialNetworkService socialNetworkService = this.container.Resolve<ISocialNetworkService>();
+            ISocialService socialNetworkService = this.container.Resolve<ISocialService>();
 
             Assert.IsNotNull(socialNetworkService);
-            Assert.IsInstanceOfType(socialNetworkService,typeof(GenericService));
+            Assert.IsInstanceOfType(socialNetworkService,typeof(PersonalInfoService));
         }
 
         [TestMethod]

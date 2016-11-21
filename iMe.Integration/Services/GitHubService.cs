@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using iMe.Common;
-using iMe.Dto;
 using iMe.Integration.Models;
 using iMe.Interfaces;
 
-
-namespace iMe.Integration.Clients
+namespace iMe.Integration.Services
 {
     public class GitHubService : ISocialNetworkService
     {

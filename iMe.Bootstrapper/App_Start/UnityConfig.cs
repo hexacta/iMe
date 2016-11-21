@@ -10,6 +10,7 @@ using iMe.Mapper;
 using Unity.WebApi;
 using iMe.Business;
 using iMe.Integration.Helpers;
+using iMe.Integration.Services;
 
 namespace iMe.Bootstrapper
 {
@@ -35,18 +36,27 @@ namespace iMe.Bootstrapper
         {
             // register all your components with the container here
             // it is NOT necessary to register your controllers
-           
-            container.RegisterType<ISocialNetworkService, TwitterService>("twitter");
-            container.RegisterType<ISocialNetworkService, GitHubService>("github");
-            container.RegisterType<ISocialNetworkService, GenericService>();
+
             container.RegisterType<IUnityContainer, UnityContainer>();
 
-            container.RegisterType<IEntityMapper, EntityMapper>();
-
+            RegisterServices(container);
+            RegisterMappers(container);
             container.RegisterType<IHttpHelper, HttpClientHelper>();
-            
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+        }
+
+        private static void RegisterServices(IUnityContainer container)
+        {
+            container.RegisterType<ISocialNetworkService, TwitterService>("twitter");
+            container.RegisterType<ISocialNetworkService, GitHubService>("github");
+            container.RegisterType<ISocialService, PersonalInfoService>();
+
+        }
+
+        private static void RegisterMappers(IUnityContainer container)
+        {
+            container.RegisterType<IEntityMapper, EntityMapper>();
         }
     }
 }
