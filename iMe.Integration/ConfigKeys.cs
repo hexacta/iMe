@@ -15,6 +15,7 @@ namespace iMe.Integration
         #region GitHub Settings
 
         public static string GitHubUserApiSearchUrl => ConfigurationManager.AppSettings["GitHubUserApiSearchUrl"];
+
         #endregion
     }
 }

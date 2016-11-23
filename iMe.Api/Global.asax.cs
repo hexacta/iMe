@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using iMe.Bootstrapper;
+
 namespace iMe
 {
     public class WebApiApplication : System.Web.HttpApplication

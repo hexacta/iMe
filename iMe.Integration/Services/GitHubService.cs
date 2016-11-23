@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+
 using iMe.Common;
 using iMe.Integration.Models;
 using iMe.Interfaces;
@@ -11,6 +12,7 @@ namespace iMe.Integration.Services
     public class GitHubService : ISocialNetworkService
     {
         private readonly IEntityMapper mapper;
+
         private readonly IHttpHelper httpHelper;
 
         public SocialNetworks SocialNetworkName => SocialNetworks.GitHub;
@@ -23,11 +25,9 @@ namespace iMe.Integration.Services
 
         public async Task<IList<SocialClientResponse>> GetPersonalInfo(string userId)
         {
-           
             IList<SocialClientResponse> personalInfo = new List<SocialClientResponse>();
             IList<GitHubUserResponse> gitHubUserResponse = new List<GitHubUserResponse>();
-            var client = httpHelper.GetConfiguredHttpClient(ConfigKeys.GitHubUserApiSearchUrl);
-
+            var client = this.httpHelper.GetConfiguredHttpClient(ConfigKeys.GitHubUserApiSearchUrl);
 
             HttpResponseMessage response = await client.GetAsync(client.BaseAddress + userId);
             if (response.IsSuccessStatusCode)
@@ -37,15 +37,12 @@ namespace iMe.Integration.Services
                 {
                     gitHubUserResponse.Add(gitUserResponse);
                 }
-
             }
 
-            personalInfo =
-                mapper.Map<IList<GitHubUserResponse>, IList<SocialClientResponse>>(gitHubUserResponse);
+            personalInfo = this.mapper.Map<IList<GitHubUserResponse>, IList<SocialClientResponse>>(gitHubUserResponse);
             return personalInfo;
         }
 
-      
         public Task<IList<SocialClientResponse>> GetPersonalInfo(string clientType, string userId)
         {
             throw new NotImplementedException();
@@ -55,6 +52,5 @@ namespace iMe.Integration.Services
         {
             throw new NotImplementedException();
         }
-        
     }
 }

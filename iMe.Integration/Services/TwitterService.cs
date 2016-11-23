@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+
 using iMe.Common;
 using iMe.Integration.Models;
 using iMe.Interfaces;
+
 using LinqToTwitter;
 
-namespace iMe.Integration.Clients
+namespace iMe.Integration.Services
 {
     public class TwitterService : ISocialNetworkService
     {
         private static ApplicationOnlyAuthorizer _auth;
+
         private readonly IEntityMapper mapper;
 
         public SocialNetworks SocialNetworkName => SocialNetworks.Twitter;
 
         public TwitterService(IEntityMapper mapper)
         {
-            this.mapper=mapper;
+            this.mapper = mapper;
         }
-        
+
         /// <summary>
         /// Twitter Login
         /// </summary>
@@ -30,13 +33,14 @@ namespace iMe.Integration.Clients
             try
             {
                 _auth = new ApplicationOnlyAuthorizer
-                {
-                    CredentialStore = new InMemoryCredentialStore
-                    {
-                        ConsumerKey = ConfigKeys.ConsumerKey,
-                        ConsumerSecret = ConfigKeys.ConsumerSecret
-                    }
-                };
+                            {
+                                CredentialStore =
+                                    new InMemoryCredentialStore
+                                        {
+                                            ConsumerKey = ConfigKeys.ConsumerKey,
+                                            ConsumerSecret = ConfigKeys.ConsumerSecret
+                                        }
+                            };
                 await _auth.AuthorizeAsync();
             }
             catch (Exception ex)
@@ -53,24 +57,25 @@ namespace iMe.Integration.Clients
         public async Task<IList<SocialClientResponse>> GetPersonalInfo(string userId)
         {
             IList<User> userList = new List<User>();
-            await Login();
+            await this.Login();
             var twitterCtx = new TwitterContext(_auth);
 
             try
             {
-                userList = await
-                   (from user in twitterCtx.User
-                    where user.Type == UserType.Lookup &&
-                          user.ScreenNameList == userId
-                    select user).ToListAsync();
+                userList =
+                    await
+                        (from user in twitterCtx.User
+                         where user.Type == UserType.Lookup && user.ScreenNameList == userId
+                         select user).ToListAsync();
             }
             catch (Exception ex)
             {
                 Debug.Write(ex.Message);
             }
 
-            IList<SocialClientResponse> personalInfo = 
-                mapper.Map<IList<User>, IList<SocialClientResponse>>(userList);
+            IList<SocialClientResponse> personalInfo =
+                this.mapper.Map<IList<User>, IList<SocialClientResponse>>(userList);
+
             return personalInfo;
         }
 
@@ -84,7 +89,5 @@ namespace iMe.Integration.Clients
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }

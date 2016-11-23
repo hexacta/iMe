@@ -1,24 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Web;
-using Microsoft.Practices.Unity;
-using iMe.Interfaces;
-using iMe.Bootstrapper;
+
 using iMe.Business;
 using iMe.Integration;
-using iMe.Mapper;
-using iMe.Integration.Clients;
 using iMe.Integration.Helpers;
 using iMe.Integration.Services;
+using iMe.Interfaces;
+using iMe.Mapper;
+
+using Microsoft.Practices.Unity;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace iMe.Bootstrapper.Test
 {
-
     [TestClass]
     public class UnityConfigTest
     {
@@ -44,7 +38,7 @@ namespace iMe.Bootstrapper.Test
             ISocialService socialNetworkService = this.container.Resolve<ISocialService>();
 
             Assert.IsNotNull(socialNetworkService);
-            Assert.IsInstanceOfType(socialNetworkService,typeof(PersonalInfoService));
+            Assert.IsInstanceOfType(socialNetworkService, typeof(PersonalInfoService));
         }
 
         [TestMethod]
@@ -82,8 +76,5 @@ namespace iMe.Bootstrapper.Test
             Assert.IsNotNull(httpHelper);
             Assert.IsInstanceOfType(httpHelper, typeof(HttpClientHelper));
         }
-
-
     }
 }
-

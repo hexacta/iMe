@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
 using System.Web;
+
 using iMe.Bootstrapper;
+
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -33,7 +31,7 @@ namespace iMe.Integration.Test
         [TestMethod]
         public void ShouldReturnSocialNetworkType()
         {
-            ISocialNetworkService service = container.Resolve<ISocialNetworkService>("twitter");
+            ISocialNetworkService service = this.container.Resolve<ISocialNetworkService>("twitter");
             var name = service.SocialNetworkName;
             Assert.IsNotNull(name);
         }
@@ -41,7 +39,7 @@ namespace iMe.Integration.Test
         [TestMethod]
         public async Task ShouldReturnSocialUserData()
         {
-            ISocialNetworkService service = container.Resolve<ISocialNetworkService>("twitter");
+            ISocialNetworkService service = this.container.Resolve<ISocialNetworkService>("twitter");
             var userData = await service.GetPersonalInfo("hexacta");
             Assert.IsNotNull(userData);
         }
