@@ -22,6 +22,7 @@ namespace iMe.Mapper
 
         public EntityMapper()
         {
+            //TODO: borrar una vez resuelto el SO de BoradcastService
             var st = new StackTrace();
             stackTraceList.Add(st);
             var stInfo = string.Empty;
