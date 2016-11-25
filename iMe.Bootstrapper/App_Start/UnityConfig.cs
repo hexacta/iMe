@@ -49,7 +49,11 @@ namespace iMe.Bootstrapper
         {
             container.RegisterType<ISocialNetworkService, TwitterService>("twitter");
             container.RegisterType<ISocialNetworkService, GitHubService>("github");
+            container.RegisterType<ISocialNetworkService, BradcastService>("broadcast");
+
             container.RegisterType<ISocialService, PersonalInfoService>();
+
+            container.RegisterType<ISocialNetworkServiceLocator, SocialNetworkServiceLocator>();
         }
 
         private static void RegisterMappers(IUnityContainer container)

@@ -82,10 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigKeys.cs" />
+    <Compile Include="ISocialNetworkService.cs" />
+    <Compile Include="Services\BroadcastService.cs" />
     <Compile Include="Services\GitHubService.cs" />
     <Compile Include="Helpers\HttpClientHelper.cs" />
     <Compile Include="IHttpHelper.cs" />
-    <Compile Include="ISocialNetworkService.cs" />
     <Compile Include="Models\GitHubUserResponse.cs" />
     <Compile Include="Models\SocialClientResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

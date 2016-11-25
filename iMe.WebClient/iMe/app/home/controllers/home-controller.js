@@ -35,7 +35,7 @@
       var selected = filter('filter')(vm.sourceOptions,{'selected' : 'true'});
       var source;
       if (selected.length==2)
-        source = 'all';
+        source = 'broadcast';
       else
         source = selected[0].value; // TODO validar en front end que haya un checkbox seleccionado y que el textbox no este vacio
             

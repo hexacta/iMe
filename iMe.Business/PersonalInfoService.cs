@@ -14,43 +14,24 @@ namespace iMe.Business
 {
     public class PersonalInfoService : ISocialService
     {
-        private readonly ISocialNetworkService[] serviceList;
+        private readonly ISocialNetworkServiceLocator serviceLocator;
 
         private readonly IEntityMapper mapper;
 
-        public PersonalInfoService(ISocialNetworkService[] snServicesList, IEntityMapper mapper)
+        public PersonalInfoService(ISocialNetworkServiceLocator serviceLocator, IEntityMapper mapper)
         {
-            this.serviceList = snServicesList;
+            this.serviceLocator = serviceLocator;
             this.mapper = mapper;
         }
 
         public async Task<IList<PersonalInfoDto>> GetPersonalInfo(string clientType, string userId)
         {
-            IList<PersonalInfoDto> userResult = new List<PersonalInfoDto>();
             List<SocialClientResponse> serviceResponse = new List<SocialClientResponse>();
-
-            // Todo: ver de refactorizar esta parte
-            SocialNetworks selectedClient = (SocialNetworks)Enum.Parse(typeof(SocialNetworks), clientType, true);
+            var clientService = this.serviceLocator.GetInstance(clientType);
 
             try
             {
-                if (selectedClient != SocialNetworks.All)
-                {
-                    foreach (var snClient in this.serviceList)
-                    {
-                        if (snClient.SocialNetworkName == selectedClient)
-                        {
-                            serviceResponse = (await snClient.GetPersonalInfo(userId)).ToList();
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var snClient in this.serviceList)
-                    {
-                        serviceResponse.AddRange(await snClient.GetPersonalInfo(userId));
-                    }
-                }
+                serviceResponse.AddRange(await clientService.GetPersonalInfo(userId));
             }
             catch (Exception ex)
             {
