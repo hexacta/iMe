@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 using iMe.Common;
@@ -18,7 +17,7 @@ namespace iMe.Integration.Services
 
         public SocialNetworks SocialNetworkName => SocialNetworks.Broadcast;
 
-        public BradcastService(/*ISocialNetworkService[] socialNetworkServices, */IEntityMapper mapper)
+        public BradcastService(ISocialNetworkService[] socialNetworkServices, IEntityMapper mapper)
         {
             this.mapper = mapper;
             this.socialNetworkServices = socialNetworkServices?.Where(s => s.SocialNetworkName != this.SocialNetworkName).ToArray();
@@ -35,6 +34,7 @@ namespace iMe.Integration.Services
 
             var personalInfo = this.mapper.Map<IList<SocialClientResponse>, IList<SocialClientResponse>>(
                 serviceResponse);
+
             return personalInfo;
         }
 

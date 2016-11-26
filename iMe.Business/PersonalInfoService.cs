@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
-
-using iMe.Common;
 using iMe.Dto;
-using iMe.Integration;
 using iMe.Integration.Models;
 using iMe.Interfaces;
 

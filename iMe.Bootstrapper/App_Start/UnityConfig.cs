@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 
 using iMe.Business;
@@ -7,7 +9,6 @@ using iMe.Integration.Helpers;
 using iMe.Integration.Services;
 using iMe.Interfaces;
 using iMe.Mapper;
-
 using Microsoft.Practices.Unity;
 
 using Unity.WebApi;
@@ -38,22 +39,53 @@ namespace iMe.Bootstrapper
             // it is NOT necessary to register your controllers
             container.RegisterType<IUnityContainer, UnityContainer>();
 
-            RegisterServices(container);
             RegisterMappers(container);
-            container.RegisterType<IHttpHelper, HttpClientHelper>();
+            RegisterHelpers(container);
+            RegisterServices(container);
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
 
+        private static void RegisterHelpers(IUnityContainer container)
+        {
+            container.RegisterType<IHttpHelper, HttpClientHelper>();
+        }
+
         private static void RegisterServices(IUnityContainer container)
         {
-            container.RegisterType<ISocialNetworkService, TwitterService>("twitter");
-            container.RegisterType<ISocialNetworkService, GitHubService>("github");
-            container.RegisterType<ISocialNetworkService, BradcastService>("broadcast");
+            Tuple<string, Type, Type>[] socialNetworkRegistrationTypes = {
+                new Tuple<string, Type, Type>("github", typeof(ISocialNetworkService), typeof(GitHubService)),
+                new Tuple<string, Type, Type>("twitter", typeof(ISocialNetworkService), typeof(TwitterService))
+            };
+
+            var socialServiceTypes = RegisterSocialNetworkServices(container, socialNetworkRegistrationTypes);
+            RegisterBroadcastService(container, socialServiceTypes);
 
             container.RegisterType<ISocialService, PersonalInfoService>();
-
+      
             container.RegisterType<ISocialNetworkServiceLocator, SocialNetworkServiceLocator>();
+        }
+
+        private static void RegisterBroadcastService(IUnityContainer container, List<object> serviceParams)
+        {
+            // Constructor injection must be configured manually
+            // to avoid recursion on type resolution in the ServiceLocator
+            container.RegisterType<ISocialNetworkService, BradcastService>("broadcast",
+                new InjectionConstructor(serviceParams.Cast<ISocialNetworkService>().ToArray(),
+                    container.Resolve<IEntityMapper>()));
+        }
+
+        private static List<object> RegisterSocialNetworkServices(IUnityContainer container, Tuple<string, Type, Type>[] socialNetworkRegistrationTypes)
+        {
+            var serviceParams = new List<object>();
+
+            foreach (var tuple in socialNetworkRegistrationTypes)
+            {
+                container.RegisterType(tuple.Item2, tuple.Item3, tuple.Item1);
+                serviceParams.Add(container.Resolve(tuple.Item2, tuple.Item1));
+            }
+
+            return serviceParams;
         }
 
         private static void RegisterMappers(IUnityContainer container)

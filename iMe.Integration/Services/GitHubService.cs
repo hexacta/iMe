@@ -25,7 +25,6 @@ namespace iMe.Integration.Services
 
         public async Task<IList<SocialClientResponse>> GetPersonalInfo(string userId)
         {
-            IList<SocialClientResponse> personalInfo = new List<SocialClientResponse>();
             IList<GitHubUserResponse> gitHubUserResponse = new List<GitHubUserResponse>();
             var client = this.httpHelper.GetConfiguredHttpClient(ConfigKeys.GitHubUserApiSearchUrl);
 
@@ -39,7 +38,7 @@ namespace iMe.Integration.Services
                 }
             }
 
-            personalInfo = this.mapper.Map<IList<GitHubUserResponse>, IList<SocialClientResponse>>(gitHubUserResponse);
+            var personalInfo = this.mapper.Map<IList<GitHubUserResponse>, IList<SocialClientResponse>>(gitHubUserResponse);
             return personalInfo;
         }
 

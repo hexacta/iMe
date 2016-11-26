@@ -1,34 +1,18 @@
-﻿using System;
-
-using AutoMapper;
+﻿using AutoMapper;
 
 using iMe.Dto;
 using iMe.Integration.Models;
 using iMe.Interfaces;
-using System.Collections.Generic;
-
 using LinqToTwitter;
 
 namespace iMe.Mapper
 {
-    using System.Diagnostics;
-    using System.Linq;
-
     public class EntityMapper : IEntityMapper
     {
         private readonly IMapper mapper;
 
-        private static List<StackTrace> stackTraceList { get; } = new List<StackTrace>();
-
         public EntityMapper()
         {
-            //TODO: borrar una vez resuelto el SO de BoradcastService
-            var st = new StackTrace();
-            stackTraceList.Add(st);
-            var stInfo = string.Empty;
-            st.GetFrames().Take(10).ToList().ForEach(s => stInfo += $"\t{s}");
-            Debug.WriteLineIf(stackTraceList.Count < 20, $"Call {stackTraceList.Count}: {stInfo}");
-
             var config = new MapperConfiguration(ConfigureMaps);
             this.mapper = config.CreateMapper();
         }
