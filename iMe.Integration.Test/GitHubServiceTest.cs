@@ -31,16 +31,16 @@ namespace iMe.Integration.Test
         [TestMethod]
         public void ShouldReturnSocialNetworkType()
         {
-            ISocialNetworkService service = this.container.Resolve<ISocialNetworkService>("github");
-            var name = service.SocialNetworkName;
+            ISocialNetworkProvider provider = this.container.Resolve<ISocialNetworkProvider>("github");
+            var name = provider.SocialNetworkName;
             Assert.IsNotNull(name);
         }
 
         [TestMethod]
         public async Task ShouldReturnSocialUserData()
         {
-            ISocialNetworkService service = this.container.Resolve<ISocialNetworkService>("github");
-            var userData = await service.GetPersonalInfo("hexacta");
+            ISocialNetworkProvider provider = this.container.Resolve<ISocialNetworkProvider>("github");
+            var userData = await provider.GetPersonalInfo("hexacta");
             Assert.IsNotNull(userData);
         }
     }

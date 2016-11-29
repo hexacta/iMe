@@ -12,7 +12,7 @@ using LinqToTwitter;
 
 namespace iMe.Integration.Services
 {
-    public class TwitterService : ISocialNetworkService
+    public class TwitterProvider : ISocialNetworkProvider
     {
         private static ApplicationOnlyAuthorizer _auth;
 
@@ -20,7 +20,7 @@ namespace iMe.Integration.Services
 
         public SocialNetworks SocialNetworkName => SocialNetworks.Twitter;
 
-        public TwitterService(IEntityMapper mapper)
+        public TwitterProvider(IEntityMapper mapper)
         {
             this.mapper = mapper;
         }

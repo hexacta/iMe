@@ -9,7 +9,7 @@ using iMe.Interfaces;
 
 namespace iMe.Integration.Services
 {
-    public class GitHubService : ISocialNetworkService
+    public class GitHubProvider : ISocialNetworkProvider
     {
         private readonly IEntityMapper mapper;
 
@@ -17,7 +17,7 @@ namespace iMe.Integration.Services
 
         public SocialNetworks SocialNetworkName => SocialNetworks.GitHub;
 
-        public GitHubService(IEntityMapper mapper, IHttpHelper httpHelper)
+        public GitHubProvider(IEntityMapper mapper, IHttpHelper httpHelper)
         {
             this.mapper = mapper;
             this.httpHelper = httpHelper;

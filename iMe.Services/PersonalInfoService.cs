@@ -4,11 +4,13 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using iMe.Dto;
 using iMe.Integration.Models;
+using iMe.IServices;
 using iMe.Interfaces;
+using iMe.Business;
 
-namespace iMe.Business
+namespace iMe.Services
 {
-    public class PersonalInfoService : ISocialService
+    public class PersonalInfoService : IPersonalInfoService
     {
         private readonly ISocialNetworkServiceLocator serviceLocator;
 

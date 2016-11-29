@@ -185,6 +185,10 @@
       <Project>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</Project>
       <Name>iMe.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\iMe.IServices\iMe.IServices.csproj">
+      <Project>{9A40AD0C-0BB8-46B1-BA8C-6F37CCF9F23B}</Project>
+      <Name>iMe.IServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

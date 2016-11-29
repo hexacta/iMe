@@ -2,16 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-
 using iMe.Business;
 using iMe.Integration;
 using iMe.Integration.Helpers;
 using iMe.Integration.Services;
 using iMe.Interfaces;
+using iMe.IServices;
 using iMe.Mapper;
 using Microsoft.Practices.Unity;
 
 using Unity.WebApi;
+using iMe.Services;
 
 namespace iMe.Bootstrapper
 {
@@ -54,14 +55,18 @@ namespace iMe.Bootstrapper
         private static void RegisterServices(IUnityContainer container)
         {
             Tuple<string, Type, Type>[] socialNetworkRegistrationTypes = {
-                new Tuple<string, Type, Type>("github", typeof(ISocialNetworkService), typeof(GitHubService)),
-                new Tuple<string, Type, Type>("twitter", typeof(ISocialNetworkService), typeof(TwitterService))
+                new Tuple<string, Type, Type>("github", typeof(ISocialNetworkProvider), typeof(GitHubProvider)),
+                new Tuple<string, Type, Type>("twitter", typeof(ISocialNetworkProvider), typeof(TwitterProvider))
             };
+
+            //No borrar esto
+            //container.RegisterType<ISocialNetworkProvider,TwitterProvider>("twitter");
+            //container.RegisterType<ISocialNetworkProvider, GitHubProvider>("github");
 
             var socialServiceTypes = RegisterSocialNetworkServices(container, socialNetworkRegistrationTypes);
             RegisterBroadcastService(container, socialServiceTypes);
 
-            container.RegisterType<ISocialService, PersonalInfoService>();
+            container.RegisterType<IPersonalInfoService, PersonalInfoService>();
       
             container.RegisterType<ISocialNetworkServiceLocator, SocialNetworkServiceLocator>();
         }
@@ -70,8 +75,8 @@ namespace iMe.Bootstrapper
         {
             // Constructor injection must be configured manually
             // to avoid recursion on type resolution in the ServiceLocator
-            container.RegisterType<ISocialNetworkService, BradcastService>("broadcast",
-                new InjectionConstructor(serviceParams.Cast<ISocialNetworkService>().ToArray(),
+            container.RegisterType<ISocialNetworkProvider, BroadcastProvider>("broadcast",
+                new InjectionConstructor(serviceParams.Cast<ISocialNetworkProvider>().ToArray(),
                     container.Resolve<IEntityMapper>()));
         }
 
