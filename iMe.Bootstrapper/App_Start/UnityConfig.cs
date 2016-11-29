@@ -10,6 +10,7 @@ using iMe.Integration.Services;
 using iMe.Interfaces;
 using iMe.Mapper;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.InterceptionExtension;
 
 using Unity.WebApi;
 
@@ -17,13 +18,7 @@ namespace iMe.Bootstrapper
 {
     public static class UnityConfig
     {
-        private static readonly Lazy<IUnityContainer> Container = new Lazy<IUnityContainer>(
-                                                                      () =>
-                                                                          {
-                                                                              var container = new UnityContainer();
-                                                                              RegisterComponents(container);
-                                                                              return container;
-                                                                          });
+        private static readonly Lazy<IUnityContainer> Container = new Lazy<IUnityContainer>(CreateContainer);
 
         /// <summary>
         /// Gets the configured Unity container.
@@ -33,10 +28,23 @@ namespace iMe.Bootstrapper
             return Container.Value;
         }
 
+        /// <summary>
+        /// Create the DI container
+        /// </summary>
+        private static IUnityContainer CreateContainer()
+        {
+            var container = new UnityContainer();
+
+            RegisterComponents(container);
+            container.AddNewExtension<Interception>();
+            
+            return container;
+        }
+
         public static void RegisterComponents(IUnityContainer container)
         {
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
+            // Register all your components with the container here
+            // It is NOT necessary to register your controllers
             container.RegisterType<IUnityContainer, UnityContainer>();
 
             RegisterMappers(container);
@@ -81,7 +89,9 @@ namespace iMe.Bootstrapper
 
             foreach (var tuple in socialNetworkRegistrationTypes)
             {
-                container.RegisterType(tuple.Item2, tuple.Item3, tuple.Item1);
+                container.RegisterType(tuple.Item2, tuple.Item3, tuple.Item1, 
+                    new Interceptor<InterfaceInterceptor>(),
+                    new InterceptionBehavior<ExceptionBehavior>());
                 serviceParams.Add(container.Resolve(tuple.Item2, tuple.Item1));
             }
 
