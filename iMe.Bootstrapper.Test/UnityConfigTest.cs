@@ -1,7 +1,5 @@
 ﻿using System.IO;
 using System.Web;
-
-using iMe.Business;
 using iMe.Integration;
 using iMe.Integration.Helpers;
 using iMe.Integration.Services;
@@ -10,6 +8,8 @@ using iMe.Mapper;
 
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using iMe.IServices;
+using iMe.Services;
 
 namespace iMe.Bootstrapper.Test
 {
@@ -35,28 +35,28 @@ namespace iMe.Bootstrapper.Test
         [TestMethod]
         public void WhenResolveSocialServiceShouldNotBeNull()
         {
-            ISocialService socialNetworkService = this.container.Resolve<ISocialService>();
+            IPersonalInfoService personalInfoNetworkService = this.container.Resolve<IPersonalInfoService>();
 
-            Assert.IsNotNull(socialNetworkService);
-            Assert.IsInstanceOfType(socialNetworkService, typeof(PersonalInfoService));
+            Assert.IsNotNull(personalInfoNetworkService);
+            Assert.IsInstanceOfType(personalInfoNetworkService, typeof(PersonalInfoService));
         }
 
         [TestMethod]
         public void WhenResolveTwitterSocialNetworkClientShouldNotBeNull()
         {
-            ISocialNetworkService twitterService = this.container.Resolve<ISocialNetworkService>("twitter");
+            ISocialNetworkProvider twitterProvider = this.container.Resolve<ISocialNetworkProvider>("twitter");
 
-            Assert.IsNotNull(twitterService);
-            Assert.IsInstanceOfType(twitterService, typeof(TwitterService));
+            Assert.IsNotNull(twitterProvider);
+            Assert.IsInstanceOfType(twitterProvider, typeof(TwitterProvider));
         }
 
         [TestMethod]
         public void WhenResolveGitHubSocialNetworkClientShouldNotBeNull()
         {
-            ISocialNetworkService gitHubService = this.container.Resolve<ISocialNetworkService>("github");
+            ISocialNetworkProvider gitHubProvider = this.container.Resolve<ISocialNetworkProvider>("github");
 
-            Assert.IsNotNull(gitHubService);
-            Assert.IsInstanceOfType(gitHubService, typeof(GitHubService));
+            Assert.IsNotNull(gitHubProvider);
+            Assert.IsInstanceOfType(gitHubProvider, typeof(GitHubProvider));
         }
 
         [TestMethod]

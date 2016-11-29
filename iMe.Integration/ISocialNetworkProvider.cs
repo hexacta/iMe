@@ -6,7 +6,7 @@ using iMe.Integration.Models;
 
 namespace iMe.Integration
 {
-    public interface ISocialNetworkService
+    public interface ISocialNetworkProvider
     {
         #region Properties
 

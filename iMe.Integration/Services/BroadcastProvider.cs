@@ -9,25 +9,25 @@ using iMe.Interfaces;
 
 namespace iMe.Integration.Services
 {
-    public class BradcastService : ISocialNetworkService
+    public class BroadcastProvider : ISocialNetworkProvider
     {
         private readonly IEntityMapper mapper;
 
-        private readonly ISocialNetworkService[] socialNetworkServices;
+        private readonly ISocialNetworkProvider[] _socialNetworkProviders;
 
         public SocialNetworks SocialNetworkName => SocialNetworks.Broadcast;
 
-        public BradcastService(ISocialNetworkService[] socialNetworkServices, IEntityMapper mapper)
+        public BroadcastProvider(ISocialNetworkProvider[] _socialNetworkProviders, IEntityMapper mapper)
         {
             this.mapper = mapper;
-            this.socialNetworkServices = socialNetworkServices?.Where(s => s.SocialNetworkName != this.SocialNetworkName).ToArray();
+            this._socialNetworkProviders = _socialNetworkProviders?.Where(s => s.SocialNetworkName != this.SocialNetworkName).ToArray();
         }
 
         public async Task<IList<SocialClientResponse>> GetPersonalInfo(string userId)
         {
             List<SocialClientResponse> serviceResponse = new List<SocialClientResponse>();
 
-            foreach (var socialNetworkService in this.socialNetworkServices)
+            foreach (var socialNetworkService in this._socialNetworkProviders)
             {
                 serviceResponse.AddRange(await socialNetworkService.GetPersonalInfo(userId));
             }

@@ -1,13 +1,12 @@
 ﻿using System;
-
 using iMe.Integration;
 
 namespace iMe.Business
 {
     public interface ISocialNetworkServiceLocator
     {
-        ISocialNetworkService GetInstance(string clientTypeName);
+        ISocialNetworkProvider GetInstance(string clientTypeName);
 
-        ISocialNetworkService GetInstance(Type clientType);
+        ISocialNetworkProvider GetInstance(Type clientType);
     }
 }

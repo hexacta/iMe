@@ -1,25 +1,24 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
-
-using iMe.Business;
+using iMe.IServices;
 
 namespace iMe.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SocialNetworkController : ApiController
     {
-        private readonly ISocialService socialService;
+        private readonly IPersonalInfoService _personalInfoService;
 
-        public SocialNetworkController(ISocialService service)
+        public SocialNetworkController(IPersonalInfoService service)
         {
-            this.socialService = service;
+            this._personalInfoService = service;
         }
 
         [Route("getpersonalinfo/{clientType}/{userId}")]
         public async Task<IHttpActionResult> GetPersonalInfo(string clientType, string userId)
         {
-            var response = await this.socialService.GetPersonalInfo(clientType.ToLower(), userId);
+            var response = await this._personalInfoService.GetPersonalInfo(clientType.ToLower(), userId);
             return this.Ok(response);
         }
     }
