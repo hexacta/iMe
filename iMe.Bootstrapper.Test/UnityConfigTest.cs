@@ -2,7 +2,7 @@
 using System.Web;
 using iMe.Integration;
 using iMe.Integration.Helpers;
-using iMe.Integration.Services;
+using iMe.Integration.Providers;
 using iMe.Interfaces;
 using iMe.Mapper;
 

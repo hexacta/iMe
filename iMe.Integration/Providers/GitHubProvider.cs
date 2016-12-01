@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 using iMe.Common;
 using iMe.Integration.Models;
 using iMe.Interfaces;
 
-namespace iMe.Integration.Services
+namespace iMe.Integration.Providers
 {
     public class GitHubProvider : ISocialNetworkProvider
     {

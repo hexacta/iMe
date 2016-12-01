@@ -5,7 +5,7 @@ using System.Web.Http;
 using iMe.Business;
 using iMe.Integration;
 using iMe.Integration.Helpers;
-using iMe.Integration.Services;
+using iMe.Integration.Providers;
 using iMe.Interfaces;
 using iMe.IServices;
 using iMe.Mapper;

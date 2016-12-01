@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
 using iMe.Common;
 using iMe.Integration.Models;
 using iMe.Interfaces;
-
 using LinqToTwitter;
 
-namespace iMe.Integration.Services
+namespace iMe.Integration.Providers
 {
     public class TwitterProvider : ISocialNetworkProvider
     {

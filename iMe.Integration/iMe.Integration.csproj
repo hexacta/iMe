@@ -83,14 +83,14 @@
   <ItemGroup>
     <Compile Include="ConfigKeys.cs" />
     <Compile Include="ISocialNetworkProvider.cs" />
-    <Compile Include="Services\BroadcastProvider.cs" />
-    <Compile Include="Services\GitHubProvider.cs" />
+    <Compile Include="Providers\BroadcastProvider.cs" />
+    <Compile Include="Providers\GitHubProvider.cs" />
     <Compile Include="Helpers\HttpClientHelper.cs" />
     <Compile Include="IHttpHelper.cs" />
     <Compile Include="Models\GitHubUserResponse.cs" />
     <Compile Include="Models\SocialClientResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\TwitterProvider.cs" />
+    <Compile Include="Providers\TwitterProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
