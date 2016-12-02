@@ -77,6 +77,7 @@ namespace iMe.Bootstrapper
             container.RegisterType<IPersonalInfoService, PersonalInfoService>();
       
             container.RegisterType<ISocialNetworkServiceLocator, SocialNetworkServiceLocator>();
+            container.RegisterType<ISocialNetworkServiceExecutor, SocialNetworkServiceExecutor>();
         }
 
         private static void RegisterBroadcastService(IUnityContainer container, List<object> serviceParams)

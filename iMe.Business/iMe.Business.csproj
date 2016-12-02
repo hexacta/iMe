@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISocialNetworkServiceExecutor.cs" />
     <Compile Include="ISocialNetworkServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialNetworkServiceExecutor.cs" />
     <Compile Include="SocialNetworkServiceLocator.cs" />
   </ItemGroup>
   <ItemGroup>
