@@ -30,7 +30,7 @@ namespace iMe.Business
                           nameof(parameters));
             }
 
-            // Skip async generated stack frames and resolve inmediate caller from service
+            // Skip async generated stack frames and resolve immediate caller from service
             var caller = new System.Diagnostics.StackFrame(5, true).GetMethod().Name;
 
             var clientService = this.serviceLocator.GetInstance(parameters[0].ToString());
