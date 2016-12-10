@@ -1,26 +1,44 @@
 <div>
-	<form id="searchForm">
-		<div>
-			<div>
-				<label for="ddlSource">Source:</label>
-				<ui-select ng-model="home.selectedSource" id="ddlSource">
-					<ui-select-match placeholder="Select social network...">
-						{{$select.selected.name}}
-					</ui-select-match>
-					<ui-select-choices repeat="option in home.sourceOptions">
-						<div><img ng-src="http://www.twitter.com/favicon.ico" /><span ng-bind="option.name"></span></div>
-					</ui-select-choices>
-				</ui-select>
+	<div id="searchForm" class="form-horizontal">
+		<div class="form-group" ng-repeat="option in home.sourceOptions">
+
+			<div class="checkbox col-md-1">
+				<label>
+    				<input type="checkbox" name="selectedSources[]" value="{{option.value}}" ng-model="option.selected">
+					{{option.name}}
+  				</label>
 			</div>
-			<div>
-				<label for="txtSearch" id="lblSearch">Username:</label>
-				<input type="text" ng-model="home.searchValue" />
-				<button id="btnSearch" class="btn btn-primary" ng-click="home.SearchUser(home.selectedSource.value,home.searchValue)">Buscar</button>
+			<div class="col-md-3">
+				<img ng-src="{{option.sourceOptionImgUrl}}"></img>
 			</div>
 		</div>
-	</form>
-</div>
+		<div class="form-group">
+			<div class="col-md-2">
+				<input type="text" class="form-control" placeholder="username" ng-model="home.searchValue">
+			</div>
+			<div class="col-md-4">
+				<button type="button" class="btn btn-primary" ng-click="home.SearchUser(home.searchValue);">Buscar</button>
+			</div>
+		</div>
+	</div>
 
-<div id="results" style="clear:both;">
-	<div id="resultGrid" ui-grid="{data: home.PersonalInfo}" class="grid"></div>
-</div>
+	<div id="results" class="row row-buffer-20">
+		<div class="col-md-12">
+			<table st-table="home.PersonalInfo" class="table table-striped">
+				<thead>
+					<th>User Name</th>
+					<th>User Id</th>
+					<th>Profile Pic</th>
+					<th>Short Bio</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in home.PersonalInfo">
+						<td>{{row.UserName}}</td>
+						<td>{{row.UserId}}</td>
+						<td><img ng-src="{{row.ProfilePicUrl}}" class="img-rounded" width="58" height="58" /></td>
+						<td>{{row.Bio}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>

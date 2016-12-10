@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{241E6DAD-3D87-417D-80C1-02E95490B66B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iMe.Services</RootNamespace>
+    <AssemblyName>iMe.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PersonalInfoService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iMe.Business\iMe.Business.csproj">
+      <Project>{031D1487-DB8E-4A44-98B8-4E915BCE080C}</Project>
+      <Name>iMe.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMe.Common\iMe.Common.csproj">
+      <Project>{A080A19E-A0C7-4C44-9CA6-50954A10A7C4}</Project>
+      <Name>iMe.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ime.Dto\iMe.Dto.csproj">
+      <Project>{55786136-f0c0-4136-a11b-0f25cea00e07}</Project>
+      <Name>iMe.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMe.Integration\iMe.Integration.csproj">
+      <Project>{b5a8dcd9-0a0a-4c58-b52f-3bde3c329eba}</Project>
+      <Name>iMe.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMe.Interfaces\iMe.Interfaces.csproj">
+      <Project>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</Project>
+      <Name>iMe.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMe.IServices\iMe.IServices.csproj">
+      <Project>{9a40ad0c-0bb8-46b1-ba8c-6f37ccf9f23b}</Project>
+      <Name>iMe.IServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -144,15 +144,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AutoMapperConfig.cs" />
-    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Factory\ClientFactory.cs" />
     <Compile Include="Controllers\SocialNetworkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PersonalInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -166,19 +162,32 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iMe.Bootstrapper\iMe.Bootstrapper.csproj">
+      <Project>{10b31d72-2640-44ed-8835-3b31d5acbd32}</Project>
+      <Name>iMe.Bootstrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMe.Business\iMe.Business.csproj">
+      <Project>{031D1487-DB8E-4A44-98B8-4E915BCE080C}</Project>
+      <Name>iMe.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ime.Dto\iMe.Dto.csproj">
       <Project>{55786136-f0c0-4136-a11b-0f25cea00e07}</Project>
       <Name>iMe.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NetworkAccess\NetworkAccess.csproj">
-      <Project>{4ca69625-14f1-4433-9be1-0a3e7093e2b3}</Project>
-      <Name>NetworkAccess</Name>
+    <ProjectReference Include="..\iMe.Integration\iMe.Integration.csproj">
+      <Project>{B5A8DCD9-0A0A-4C58-B52F-3BDE3C329EBA}</Project>
+      <Name>iMe.Integration</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TwitterAccess\TwitterAccess.csproj">
-      <Project>{823d7955-9f8e-4601-9ae2-946de171a06a}</Project>
-      <Name>TwitterAccess</Name>
+    <ProjectReference Include="..\iMe.Interfaces\iMe.Interfaces.csproj">
+      <Project>{4CA69625-14F1-4433-9BE1-0A3E7093E2B3}</Project>
+      <Name>iMe.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMe.IServices\iMe.IServices.csproj">
+      <Project>{9A40AD0C-0BB8-46B1-BA8C-6F37CCF9F23B}</Project>
+      <Name>iMe.IServices</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
