@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using iMe.Business.Exceptions;
 using iMe.Common;
 using iMe.Integration;
 
@@ -44,7 +45,7 @@ namespace iMe.Business
 
             if (value == SocialNetworks.None)
             {
-                throw new ArgumentException($"Invalid social network service type: {clientType}", nameof(clientType));
+                throw new SocialNetworkNotFoundException($"Invalid social network service type: {clientType}", nameof(clientType));
             }
         }
     }

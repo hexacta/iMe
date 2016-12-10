@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\SocialNetworkNotFoundException.cs" />
     <Compile Include="ISocialNetworkServiceExecutor.cs" />
     <Compile Include="ISocialNetworkServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
